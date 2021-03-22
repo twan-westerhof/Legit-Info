@@ -244,19 +244,31 @@ def results(request, search_id):
     impact_list = criteria.impacts.all()
 
     laws_list = Law.objects.filter(location__in=loc_list)
+<<<<<<< HEAD
     laws_list = laws.filter(impact__in=impact_list)
+=======
+    laws_list = laws_list.filter(impact__in=impact_list)
+>>>>>>> upstream/paginationPR
 
     # Pagination logic, to change the amount of laws per page modify NUM_LAWS_PER_PAGE
     NUM_LAWS_PER_PAGE = 10
     page = request.GET.get('page')
     paginator = Paginator(laws_list, NUM_LAWS_PER_PAGE)
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> upstream/paginationPR
     try: 
         laws = paginator.page(page)
     except PageNotAnInteger:
         laws = paginator.page(1)
     except EmptyPage:
         laws = paginator.page(paginator.num_pages)
+<<<<<<< HEAD
+=======
+
+>>>>>>> upstream/paginationPR
 
     gen_date = datetime.now().strftime("%B %-d, %Y")
 
